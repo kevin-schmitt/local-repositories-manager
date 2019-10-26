@@ -29,7 +29,7 @@ on .env
 
 
 
-# installation
+# install
 Require  docker & dockercompose, you can use postman for test
 RUN `make install`
 RUN `make phpunit`
