@@ -13,7 +13,7 @@ stop:
 
 install:
 	$(DOCKER_COMPOSE) up -d --build
-	$(DOCKER_COMPOSE) exec $(PHP-APP) cp .env.dist .env && exit
+	cp .env.dist .env 
 	make composer
 
 composer:
