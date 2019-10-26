@@ -17,9 +17,9 @@ on .env
 * docker installation just need docker-compose and docker
 * test 
 * endpoints
-    * GET localhost/projects/{nameRepository}/commits (get commits of repository)
-    * GET localhost/projects/{nameRepository}/branchs" (get branchs of repository)
-    * GET localhost/projects (get all repositories work with api for path define in .env file)
+    * GET localhost/repositories/{nameRepository}/commits (get commits of repository)
+    * GET localhost/repositories/{nameRepository}/branchs" (get branchs of repository)
+    * GET localhost/repositories (get all repositories work with api for path define in .env file)
     * POST localhost/branchs (create new branch) Payload {branch=myNameBranch, repository=repositoryName}
     * POST localhost/branchs/merge (merge two branch of repository)  Payload {
                                                                                 branchOne: "test",
@@ -33,7 +33,7 @@ on .env
 Require  docker & dockercompose, you can use postman for test
 RUN `make install`
 RUN `make phpunit`
-You can go `localhost/projects/python-demo/commits`
+You can go `localhost/repositories/python-demo/commits`
 
 # test
 
