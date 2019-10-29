@@ -9,7 +9,7 @@ Rest api to use local git repositories without remote
     * /Service
         * GitManagerService.php
 
-GitManagerService permit to use git command on project use like parameter in the request, path of repositories if define
+GitManagerService permit use git command on project use like parameter in the request and include in the path define in configuration, path of repositories is define
 on .env
 
 # features
@@ -42,9 +42,10 @@ on .env
 # todo
 - improve test for more isolation with fake repo
 - custom exception for api errors
+- better code error
+- add listener  for api exception
 - add vuejs for front interaction.
 - add authentification with jwt and authentificator
-- improve validation of data and create class for handler request
 - add behat test
 - improve security for system command
 
