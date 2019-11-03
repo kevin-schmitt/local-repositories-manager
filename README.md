@@ -33,7 +33,7 @@ on .env
 * Require  docker & dockercompose, you can use postman for test
 * RUN `make install`
 * RUN `make phpunit`
-* You can go `localhost/repositories/python-demo/commits`
+* You can go `localhost/repositories/python-memo/commits`
 
 # test
 
