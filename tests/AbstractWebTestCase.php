@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Tests;
 
 use Symfony\Component\Panther\PantherTestCase;
@@ -9,7 +10,7 @@ class AbstractWebTestCase extends PantherTestCase
     protected $client;
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function setUp(): void
     {
@@ -18,17 +19,16 @@ class AbstractWebTestCase extends PantherTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function tearDown(): void
     {
         parent::tearDown();
         $this->client = null;
     }
-  
+
     /**
-     * @param bool $decodeAsArray
-     * @return null|\stdClass|array
+     * @return \stdClass|array|null
      */
     protected function getDecodedResponse(bool $decodeAsArray = true)
     {
@@ -37,6 +37,7 @@ class AbstractWebTestCase extends PantherTestCase
             return null;
         }
         $decodedResponse = json_decode($response, $decodeAsArray);
+
         return $decodedResponse;
     }
 }

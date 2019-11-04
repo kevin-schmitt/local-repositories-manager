@@ -17,8 +17,6 @@ class GitManagerService
     /**
      * get All branch for specific project.
      *
-     * @param string $path
-     *
      * @return array|string
      */
     public function getBranchs(string $path)
@@ -43,10 +41,6 @@ class GitManagerService
 
     /**
      * Permit with path of repository to get all commit.
-     *
-     * @param string $path
-     *
-     * @return array
      */
     public function getCommits(string $path): array
     {
@@ -66,8 +60,6 @@ class GitManagerService
     /**
      * Permit create new branch.
      *
-     * @param string $name
-     *
      * @return array
      */
     public function createBranch(string $path, string $name): string
@@ -86,7 +78,7 @@ class GitManagerService
         }
     }
 
-     /**
+    /**
      * merge branchs.
      *
      * @param string $name
@@ -97,7 +89,7 @@ class GitManagerService
     {
         $messages = [
             'error' => 'Impossible to merge',
-            'success' => "Merge success",
+            'success' => 'Merge success',
         ];
 
         extract($data);
@@ -112,6 +104,6 @@ class GitManagerService
         ob_start();
         system($command, $retval);
 
-        return ($retval !== 0) ? $retval : ob_get_clean();
+        return (0 !== $retval) ? $retval : ob_get_clean();
     }
 }

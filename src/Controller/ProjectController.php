@@ -2,12 +2,12 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 use App\Service\GitManagerService;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/repositories")
@@ -27,11 +27,6 @@ class ProjectController extends AbstractController
      * get commit for project $name.
      *
      * @Route("/{name}/commits", methods={"GET"})
-     *
-     * @param string            $name
-     * @param GitManagerService $gitManager
-     *
-     * @return JsonResponse
      */
     public function getCommits(string $name, GitManagerService $gitManager): JsonResponse
     {
@@ -50,8 +45,6 @@ class ProjectController extends AbstractController
      * get all  repositories avaible.
      *
      * @Route("/", methods={"GET"})
-     *
-     * @return JsonResponse
      */
     public function list(): JsonResponse
     {
@@ -63,17 +56,13 @@ class ProjectController extends AbstractController
 
         $repositories = scandir($path);
 
-        return $this->json($repositories,  Response::HTTP_OK);
+        return $this->json($repositories, Response::HTTP_OK);
     }
 
-      /**
+    /**
      * get all branch for one project.
      *
      * @Route("/{name}/branchs", methods={"GET"})
-     *
-     * @param string $name
-     *
-     * @return JsonResponse
      */
     public function listBranchs(string $name): JsonResponse
     {
