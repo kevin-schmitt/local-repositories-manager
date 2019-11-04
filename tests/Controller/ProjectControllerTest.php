@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Tests\Controller;
+
 use App\Tests\AbstractWebTestCase;
 use App\Tests\Parameters;
 
 class ProjectControllerTest extends AbstractWebTestCase
 {
-
     public function testGetCommits()
     {
         $name = Parameters::NAME_REPO;
@@ -16,8 +16,7 @@ class ProjectControllerTest extends AbstractWebTestCase
 
         unset($response[0]);
         $this->assertGreaterThanOrEqual(1, count($response));
-        foreach($response as $commit)
-        {
+        foreach ($response as $commit) {
             $this->assertEquals(true, strpos($commit, 'Date'));
             $this->assertEquals(true, strpos($commit, 'Author'));
             $this->assertEquals(true, strpos($commit, '@'));
@@ -27,12 +26,13 @@ class ProjectControllerTest extends AbstractWebTestCase
     public function testGetRepositories()
     {
         $name = Parameters::NAME_REPO;
-        $this->client->request('GET', "/repositories/");
-        
+        $this->client->request('GET', '/repositories/');
+
         $response = $this->getDecodedResponse();
-        
-        $this->assertEquals(true, in_array('python-memo', $response));      
+
+        $this->assertEquals(true, in_array('python-memo', $response));
     }
+
     /*
     private function repoHandler(string $nameScript)
     {

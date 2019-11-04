@@ -2,14 +2,15 @@
 
 namespace App\Controller;
 
-use Symfony\Component\HttpFoundation\{ Request, Response };
-use Symfony\Component\Routing\Annotation\Route;
 use App\Service\GitManagerService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("/branchs")
@@ -36,18 +37,13 @@ class BranchController extends AbstractController
      *  branchTwo: "test2",
      *  name: "name-repo"
      * }
-     *
-     * @param Request           $request
-     * @param GitManagerService $gitManager
-     *
-     * @return JsonResponse
      */
     public function merge(Request $request, GitManagerService $gitManager): JsonResponse
     {
         $data = [
             'branchOne' => $request->query->get('branchOne'),
             'branchTwo' => $request->query->get('branchTwo'),
-            'name' => $request->query->get('name')
+            'name' => $request->query->get('name'),
         ];
 
         $violations = $this->mergeRequest($data);
@@ -96,11 +92,6 @@ class BranchController extends AbstractController
      *  branch: "myBranch",
      *  repository: "nameProject"
      * }
-     *
-     * @param Request           $request
-     * @param GitManagerService $gitManager
-     *
-     * @return JsonResponse
      */
     public function createBranch(Request $request, GitManagerService $gitManager): JsonResponse
     {
@@ -135,6 +126,4 @@ class BranchController extends AbstractController
 
         return $path;
     }
-
-   
 }
