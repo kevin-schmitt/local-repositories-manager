@@ -35,5 +35,5 @@ csfixer:
 # Execute unit tests
 phpunit:
 	make start
-	$(DOCKER_COMPOSE) exec $(PHP-APP) php ./vendor/simple-phpunit
+	$(DOCKER_COMPOSE) exec $(PHP-APP) php ./vendor/bin/simple-phpunit
 
